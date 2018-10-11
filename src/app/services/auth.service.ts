@@ -81,14 +81,15 @@ export class AuthService {
     const id = new kurve.Identity(Settings.APPCLIENTID, Settings.LOGIN_URL,  
       { endpointVersion: kurve.EndpointVersion.v2 });
 
-      id.loginAsync({ scopes: [kurve.Scopes.Mail.Read] }).then(_ => {
+      id.loginAsync({ scopes: [kurve.Scopes.User.Read] }).then(_ => {
         this.isAuthenticated = true;
 
         const graph = new kurve.Graph(id);
-        graph.me.messages.GetMessages().then(data => {
-            this.messages = data.value
+        graph.me.GetUser().then(data => {
+          this.storeData(data);
+          this.router.navigate(['/home']);
         });
-        this.router.navigate(['/home'])
+      
     });
   }
   private socialSignIn(provider) {
@@ -156,6 +157,11 @@ export class AuthService {
 
     this.db.object(path).update(data)
       .catch(error => console.log(error));
+  }
 
+  storeData(data: Object) {
+    if (!localStorage.getItem('auth')) {
+      localStorage.setItem('auth', JSON.stringify(data));
+    }
   }
 }

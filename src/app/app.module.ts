@@ -10,19 +10,28 @@ import { LoginComponent } from './components/login/login.component';
 import {RouterModule} from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatToolbarModule, MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
