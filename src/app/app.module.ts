@@ -12,9 +12,7 @@ import { APP_ROUTES } from './app.routes';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatToolbarModule, MatCardModule } from '@angular/material';
-import { IssueComponent } from './Components/issue/issue.component';
+import { IssuesComponent } from './components/issue/issues.component';
 import { ResponseComponent } from './Components/response/response.component';
 
 @NgModule({
@@ -22,9 +20,9 @@ import { ResponseComponent } from './Components/response/response.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
     AppComponent,
-    IssueComponent,
+    IssuesComponent,
     ResponseComponent
   ],
   imports: [
@@ -32,11 +30,7 @@ import { ResponseComponent } from './Components/response/response.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    RouterModule.forRoot(APP_ROUTES),
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatCardModule
+    RouterModule.forRoot(APP_ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

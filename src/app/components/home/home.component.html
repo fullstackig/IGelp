@@ -1,16 +1,10 @@
-
-<mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar></div>
-      <mat-card-title><h1>Bienvenido! {{profile.displayName}}</h1></mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <li>Mail: {{profile.mail}}</li>
-      <li>jobTitle: {{profile.jobTitle}}</li>
-      <li>Location: {{profile.officeLocation}}</li>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="example-card">
+    <h1>Bienvenido! {{profile.displayName}}</h1>
+  <ul>
+    <li>Mail: {{profile.mail}}</li>
+    <li>jobTitle: {{profile.jobTitle}}</li>
+    <li>Location: {{profile.officeLocation}}</li>
+  </ul>
+    <button>LIKE</button>
+    <button>SHARE</button>
+</div>
