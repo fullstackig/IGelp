@@ -3,18 +3,21 @@ import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 import * as firebase from 'firebase';
-
+import * as kurve from 'kurvejs';
+import * as Settings from '../app.settings';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   authState: any = null;
-
-
+  private isAuthenticated:boolean = false;
+  private messages:kurve.MessageDataModel[];
 
   constructor(private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
+    private router: Router
     //private router: Router
   ) {
     this.afAuth.authState.subscribe((auth) => {
@@ -74,6 +77,21 @@ export class AuthService {
     return this.socialSignIn(provider);
   }
 
+  activeDLogin(){
+    const id = new kurve.Identity(Settings.APPCLIENTID, Settings.LOGIN_URL,  
+      { endpointVersion: kurve.EndpointVersion.v2 });
+
+      id.loginAsync({ scopes: [kurve.Scopes.User.Read] }).then(_ => {
+        this.isAuthenticated = true;
+
+        const graph = new kurve.Graph(id);
+        graph.me.GetUser().then(data => {
+          this.storeData(data);
+          this.router.navigate(['/home']);
+        });
+      
+    });
+  }
   private socialSignIn(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
@@ -139,6 +157,11 @@ export class AuthService {
 
     this.db.object(path).update(data)
       .catch(error => console.log(error));
+  }
 
+  storeData(data: Object) {
+    if (!localStorage.getItem('auth')) {
+      localStorage.setItem('auth', JSON.stringify(data));
+    }
   }
 }

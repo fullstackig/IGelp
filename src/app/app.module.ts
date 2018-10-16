@@ -6,16 +6,32 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './components/login/login.component';
+import {RouterModule} from '@angular/router';
+import { APP_ROUTES } from './app.routes';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatToolbarModule, MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    RouterModule.forRoot(APP_ROUTES),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
