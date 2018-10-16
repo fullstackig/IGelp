@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/layout/header/header.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatToolbarModule, MatCardModule } from '@angular/material';
+import { IssueComponent } from './Components/issue/issue.component';
+import { ResponseComponent } from './Components/response/response.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,9 @@ import { MatButtonModule, MatToolbarModule, MatCardModule } from '@angular/mater
     LoginComponent,
     HomeComponent,
     HeaderComponent
+    AppComponent,
+    IssueComponent,
+    ResponseComponent
   ],
   imports: [
     BrowserModule,
