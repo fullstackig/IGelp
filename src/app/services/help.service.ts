@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AuthService} from './auth.service'
+import {AuthService} from './auth.service';
+import { Response } from "../models/response";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class HelpService {
         this.resultado = user
       })
     }
+  }
+
+  setResponse(response:Response){
+
   }
 
   logOut() {

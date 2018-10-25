@@ -1,3 +1,40 @@
-<p>
-  response works!
-</p>
+<div class="container">
+
+  <div class="card">
+    <h5 class="card-header">Responder</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8">
+          <h5 class="card-title">{{response.titulo}}</h5>
+        </div>
+        <div class="col-md-4">
+          <p class="card-text">{{fechaActual}}</p>
+        </div>
+      </div>
+
+      <p class="card-text">{{response.descripcion}}</p>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="txtAutor">Autor</label>
+            <input type="text" class="form-control" name="txtAutor" readonly [value]="response.autor">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="txtFechaCreacion">Fecha Creacion</label>
+            <input type="text" class="form-control" name="txtFechaCreacion" readonly [value]="response.fechaIssue">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="txtRespuesta">Respuesta</label>
+        <textarea class="form-control" name="txtRespuesta" id="txtRespuesta" rows="3" (input)="response.respuesta = $event.target.value"></textarea>
+      </div>
+
+      <a (click)="enviar()" class="btn btn-primary">Responder</a>
+    </div>
+  </div>
+
+</div>
