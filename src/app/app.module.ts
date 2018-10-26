@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/layout/header/header.component';
 
 import { IssuesComponent } from './components/issue/issues.component';
 import { ResponseComponent } from './Components/response/response.component';
+import { NotificationsComponent } from './Components/notifications/notifications.component';
+import { MessagingService } from './services/messaging.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,9 @@ import { ResponseComponent } from './Components/response/response.component';
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    AppComponent,
     IssuesComponent,
-    ResponseComponent
+    ResponseComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { ResponseComponent } from './Components/response/response.component';
     AngularFireDatabaseModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
+  providers: [MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
